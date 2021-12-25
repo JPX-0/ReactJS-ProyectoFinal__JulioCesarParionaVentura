@@ -1,0 +1,40 @@
+.payment {
+  margin  : 4rem 4rem;
+  padding : 1rem;
+  &__title {
+    margin: auto;
+  }
+  &__form {
+    display               : grid;
+    gap                   : 2rem;
+    grid-template-columns : 1fr 1fr;
+    @include responsive(sm) {
+      grid-template-columns : 1fr;
+      grid-template-rows    : repeat(4, 1fr) auto;
+    }
+  }
+  &__container {
+    display        : flex;
+    flex-direction : column;
+    font-size      : 2rem;
+    gap            : 0.5rem;
+    &-input {
+      border      : 0.2rem solid transparent;
+      margin-left : 1rem;
+      outline     : none;
+      padding     : 1rem;
+      &:focus {
+        border-color: blue;
+      }
+      &--err {
+        border-color: red !important;
+      }
+    }
+  }
+  &__btn {
+    grid-column: 1/3;
+    @include responsive(sm) {
+      grid-column: 1/2;
+    }
+  }
+}

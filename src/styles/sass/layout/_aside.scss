@@ -1,0 +1,40 @@
+.aside {
+  align-items      : center;
+  background-color : rgba(0, 0, 0, 0.5);
+  bottom           : 0;
+  display          : none;
+  justify-content  : center;
+  left             : 0;
+  position         : fixed;
+  right            : 0;
+  top              : 0;
+  z-index          : 15;
+  &--active {
+    display: flex;
+  }
+}
+
+.alert {
+  align-items      : center;
+  animation        : modalAlert 0.5s normal;
+  background-color : white;
+  border-radius    : 1rem;
+  display          : flex;
+  flex-wrap        : wrap;
+  gap              : 1rem;
+  justify-content  : space-evenly;
+  max-height       : 20rem;
+  min-height       : 15rem;
+  padding          : 1rem;
+  text-align       : center;
+  width            : 50%;
+  @include responsive(sm) {
+    width: 80%;
+  }
+  &__text {
+    width: 100%;
+    & > span {
+      font-weight: bold;
+    }
+  }
+}

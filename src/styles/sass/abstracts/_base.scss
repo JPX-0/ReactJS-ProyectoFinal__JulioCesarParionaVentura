@@ -1,0 +1,89 @@
+main {
+  min-height : 100vh;
+}
+
+.message {
+  font-size  : 3rem;
+  margin-top : 1rem;
+  text-align : center;
+}
+
+.msg {
+  color      : blue;
+  display    : block;
+  font-size  : 2.5rem;
+  height     : 100%;
+  text-align : center;
+  width      : 100%;
+  &__cargando {
+    &::after {
+      content: "";
+      animation: textCargando 1s alternate infinite;
+    }
+  }
+  &__error {
+    color: red;
+    &::after {
+      content: "Ups! ocurrió un problema al intentar pedir los datos...";
+    }
+  }
+  &__completado {
+    color: green;
+    &::after {
+      content: "✓ Se encontraron los productos";
+    }
+  }
+}
+.center {
+  align-items     : center;
+  display         : flex;
+  justify-content : center;
+}
+.responsive {
+  &-D {
+    &--Block {
+      display: block;
+      @include responsive(sm) {
+        display: none;
+      }
+    }
+    &--Flex {
+      display: flex;
+      @include responsive(sm) {
+        display: none;
+      }
+    }
+    &--Grid {
+      display: grid;
+      @include responsive(sm) {
+        display: none;
+      }
+    }
+  }
+  &-M {
+    &--Block {
+      display: none;
+      @include responsive(sm) {
+        display: block;
+      }
+    }
+    &--Flex {
+      display: none;
+      @include responsive(sm) {
+        display: flex;
+      }
+    }
+    &--Grid {
+      display: none;
+      @include responsive(sm) {
+        display: grid;
+      }
+    }
+  }
+}
+.d-none {
+  display: none;
+}
+.p-1 {
+  padding: 1rem 0;
+}

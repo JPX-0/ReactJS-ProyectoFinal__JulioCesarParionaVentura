@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+// Import required functions.
+import './styles/css/App.css';
+import Cart from './components/main/cart/Cart';
+import CartContextProvider from './components/main/cart/CartContext';
+import DataUser from './layout/main/DataUser';
+import Error404 from './layout/main/Error404';
+import Home from './layout/main/Home';
+import ItemDetailContainer from "./components/main/items/details/ItemDetailContainer"
+import ItemListContainer from './components/main/items/lists/ItemListContainer';
+import ItemOfferContainer from './components/main/items/offer/ItemOfferContainer';
+import NavBar from './layout/header/Navbar';
+import UserContextProvider from './components/main/cart/UserContextProvider';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import Footer from './layout/footer/Footer';
 
-function App() {
+// App -- Renderiza la aplicación ReactJS.
+// App -- Render the ReactJS application.
+const App = () => {
+  window.addEventListener("unload", () => {
+    localStorage.clear()
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
+    <UserContextProvider>
+    <CartContextProvider>
+      <BrowserRouter>
+        {/* <header> -- muestra el NavBar */}
+        {/* <header> -- show the NavBar  */}
+        <header className="header">
+          <NavBar/>
+        </header>
+        {/* <main> -- muestra el ItemListContainer, ItemOfferContainer, ItemDetailContainer, Cart, DataUser y Error404 */}
+        {/* <main> -- show the ItemListContainer, ItemOfferContainer, ItemDetailContainer, Cart, DataUser and Error404 */}
+        <main className="main">
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/tienda" element={<ItemListContainer/>}/>
+            <Route path="/ofertas" element={<ItemOfferContainer/>}/>
+            <Route path="/categoria/:idCategory" element={<ItemListContainer/>}/>
+            <Route path="/producto/:idProduct" element={<ItemDetailContainer/>}/>
+            <Route path="/carrito" element={<Cart/>}/>
+            <Route path="/data-user" element={<DataUser/>}/> 
+            <Route path="/*" element={<Error404/>}/>
+          </Routes>
+        </main>
+        {/* <footer> -- muestra el Pie de Página */}
+        {/* <footer> -- show the Footer */}
+        <Footer/>
+      </BrowserRouter>
+    </CartContextProvider>
+    </UserContextProvider>
+  )};
 export default App;

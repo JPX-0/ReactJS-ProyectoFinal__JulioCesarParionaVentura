@@ -1,0 +1,187 @@
+.header {
+  background-color : black;
+  font-family      : 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size        : 2rem;
+  height           : 8rem;
+  left             : 0;
+  position         : sticky;
+  right            : 0;
+  top              : -6.5rem;
+  transition       : 0.3s;
+  z-index          : 10;
+  @include responsive(sm) {
+    font-size : 1.8rem;
+    height    : 6rem;
+    top       : 0;
+  }
+  &:hover {
+    top: 0;
+  }
+  &:hover ~ .main .cart__container {
+    top: 8.5rem;
+  }
+  &__container {
+    align-items     : center;
+    color           : #f5f0f2;
+    display         : flex;
+    gap             : 1.5rem;
+    height          : 100%;
+    justify-content : space-between;
+    padding         : 0 3rem;
+    position        : relative;
+  }
+  &__logo {
+    align-items     : center;
+    color           : #f5f0f2;
+    display         : flex;
+    gap             : 1rem;
+    height          : 100%;
+    justify-content : center;
+    width           : max-content;
+    &-img {
+      height     : calc(100% - 3rem);
+      object-fit : contain;
+      @include responsive(sm) {
+        height     : calc(100% - 2rem);
+      }
+    }
+    &-text {
+      display : block;
+      width   : max-content;
+    }
+  }
+  &__menu {
+    display    : flex;
+    gap        : 1rem;
+    height     : 100%;
+    transition : 0.3s;
+    @include responsive(sm) {
+      background-color : black;
+      flex-direction   : column;
+      height           : 0;
+      overflow         : hidden;
+      position         : absolute;
+      right            : 0;
+      top              : 100%;
+      width            : 20rem;
+    }
+    @include responsive(xs) {
+      width: 100%;
+    }
+    &--active {
+      height          : 19rem;
+      justify-content : center;
+      padding         : 1rem 0;
+      overflow         : inherit;
+      @include responsive(xs) {
+        height: 27rem;
+      }
+    }
+  }
+  &__list {
+    align-items : center;
+    display     : flex;
+    position    : relative;
+    width       : 100%;
+    .header__menu > &:last-child {
+      @include responsive(sm) {
+        bottom   : 1rem;
+        height   : 4.5rem;
+        position : fixed;
+        right    : 1.5rem;
+        width    : 4.5rem;
+      }
+    }
+    &:hover .header__category {
+      height  : 20rem;
+      padding : 1rem 0;
+      @include responsive(sm) {
+        height : 18.5rem;
+        right  : calc(100% + 1.5rem);
+        top    : 0;
+      }
+      @include responsive(xs) {
+        height : 27rem;
+        right  : 0;
+        top    : 100%;
+      }
+    }
+    &--dropdown {
+      cursor: context-menu;
+      &:hover {
+        color: #14bbb3;
+        &::after {
+          height : 2rem;
+          right  : 0.45rem;
+          width  : 2rem;
+          @include responsive(sm) {
+            bottom : 0;
+            right  : calc(100% + 0.5rem);
+          }
+        }
+      }
+      &::after {
+        content: "";
+        background-color : black;
+        bottom           : -2.5rem;
+        display          : block;
+        height           : 0;
+        position         : absolute;
+        right            : 2rem;
+        transform        : rotate(45deg);
+        transition       : 0.2s;
+        width            : 0;
+        z-index          : -1;
+        @include responsive(sm) {
+          bottom : 50%;
+          right  : calc(100% + 1rem);
+        }
+        @include responsive(xs) {
+          display: none;
+        }
+      }
+    }
+  }
+  &__title {
+    align-items     : center;
+    color           : #f5f0f2;
+    display         : flex;
+    height          : 100%;
+    justify-content : center;
+    padding         : 0.5rem 1rem;
+    width           : 100%;
+    @include responsive(sm) {
+      padding : 0.5rem;
+      width   : 100%;
+    }
+    @include responsive(xs) {
+      padding: 1.5rem;
+    }
+    &:hover {
+      color: #14bbb3;
+    }
+  }
+  &__category {
+    align-items      : center;
+    background-color : black;
+    display          : flex;
+    flex-direction   : column;
+    gap              : 1rem;
+    height           : 0;
+    overflow         : hidden;
+    position         : absolute;
+    right            : 0;
+    top              : calc(100% + 1.5rem);
+    transition       : 0.3s;
+    width            : 15rem;
+    @include responsive(sm) {
+      right : calc(100% + 1rem);
+      top   : 0;
+    }
+    @include responsive(xs) {
+      right : 0;
+      top   : 100%;
+      width : 100%;
+    }
+  }
+}
