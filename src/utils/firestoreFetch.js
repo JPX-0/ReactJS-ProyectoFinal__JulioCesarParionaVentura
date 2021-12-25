@@ -9,7 +9,7 @@ export const firestoreFetchAll = async (idCategory) => {
   if(idCategory) {
     // se reemplaza el ID que viene por URL, y se transforma a un ID existente en Firebase.
     // the ID that comes in is replaced by URL, and it is transformed to an existing ID in Firebase.
-    let replaceId = idCategory.replace(/\-/g, " ").split(" ").map(e => e[0].toUpperCase() + e.slice(1)).join(" ");
+    let replaceId = idCategory.replace(/-/g, " ").split(" ").map(e => e[0].toUpperCase() + e.slice(1)).join(" ");
     q = query(collection(db, "data"), where("categoryId", "==", replaceId));
   } else {
     q = query(collection(db, "data"), orderBy("title"));
